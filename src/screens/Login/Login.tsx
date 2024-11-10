@@ -5,7 +5,12 @@ import React, {useEffect} from 'react';
 import BackgroundGeolocation from 'react-native-background-geolocation';
 
 const Login = () => {
-  const {addLocation, getLocations} = useDB();
+  /**
+   * uncommenting the below code will cause an error
+   * because the useDB hook is not yet completed
+   * something abt react-native-sensitive-info
+   */
+  // const {addLocation, getLocations} = useDB();
 
   useEffect(() => {
     const setupBackgroundGeolocation = () => {
