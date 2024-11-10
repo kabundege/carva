@@ -6,6 +6,11 @@ buildscript {
         targetSdkVersion = 34
         ndkVersion = "26.1.10909125"
         kotlinVersion = "1.9.24"
+                // background-geolocation
+        playServicesLocationVersion = "21.0.1"  // Or higher.
+        hmsLocationVersion = "6.9.0.300" // Huawei HMS location version
+        appCompatVersion = "1.4.1"
+        removeBackgroundGeolocationDebugSoundsInRelease = false
     }
     repositories {
         google()
@@ -19,3 +24,18 @@ buildscript {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+
+allprojects {
+    repositories {
+        // It's been reported that some people might require mavenLocal() repo here.
+        // I leave it disabled for now.
+        //mavenLocal()
+
+        // Required for react-native-background-geolocation
+        maven { url("${project(':react-native-background-geolocation').projectDir}/libs") }
+        maven { url 'https://developer.huawei.com/repo/' }
+        // Required for react-native-background-fetch
+        maven { url("${project(':react-native-background-fetch').projectDir}/libs") }
+    }
+}

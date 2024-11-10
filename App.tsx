@@ -5,7 +5,6 @@ import {store, persistor} from './src/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import Toast, {ToastConfig} from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CodePush, {CodePushOptions} from 'react-native-code-push';
 import {NavigationContainer} from '@react-navigation/native';
 import {NetworkProvider} from 'react-native-offline';
 import {linking} from './src/config';
@@ -31,10 +30,6 @@ import {ErrorResponse, SuccessResponse} from './src/hooks/useFetch';
 import {EventProvider} from 'react-native-outside-press';
 import ToastType from './src/enums/toast-type.enum';
 import {CustomToast} from './src/components';
-
-const codePushOptions: CodePushOptions = {
-  checkFrequency: CodePush.CheckFrequency.MANUAL,
-};
 
 export const toastConfig: ToastConfig = {
   success: ({text1, text2}) => (
@@ -117,4 +112,4 @@ const App = () => (
   </PersistQueryClientProvider>
 );
 
-export default CodePush(codePushOptions)(App);
+export default App;

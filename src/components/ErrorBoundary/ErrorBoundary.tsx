@@ -8,7 +8,6 @@ import ButtonType from '../../enums/button-type.enum';
 import Icon from '../../../assets/svg/404.svg';
 import {StyleSheet, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import CodePush from 'react-native-code-push';
 import React, {ReactNode} from 'react';
 import Button from '../Button';
 import Spacer from '../Spacer';
@@ -22,7 +21,7 @@ const ErrorBoundary = ({children}: ErrorBoundaryProps) => {
   const {t} = useTranslation();
 
   const handleRestartApp = () => {
-    CodePush.restartApp();
+    console.log('======== Restarting the app +++++====');
   };
 
   const errorHandler = (error: Error) => {

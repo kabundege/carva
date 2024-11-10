@@ -13,8 +13,6 @@ import {
 } from 'redux-persist';
 import SensitiveStorage from '../utils/SensitiveStorage';
 import AuthReducer, {AuthState} from './Reducers/AuthReducer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import CodePushReducer, {CodePushState} from './Reducers/CodePushReducer';
 
 const sensitiveStorage = SensitiveStorage({
   keychainService: 'KeyChain',
@@ -27,15 +25,8 @@ const authPersistConfig: PersistConfig<AuthState> = {
   whitelist: ['isAuth', 'userInfo', 'token', 'hasFirstTimeLogin'],
 };
 
-const codePushPersistConfig: PersistConfig<CodePushState> = {
-  key: 'CodePush',
-  whitelist: ['version'],
-  storage: AsyncStorage,
-};
-
 const Reducers = combineReducers({
   auth: persistReducer(authPersistConfig, AuthReducer),
-  codepush: persistReducer(codePushPersistConfig, CodePushReducer),
 });
 
 export const store = configureStore({
