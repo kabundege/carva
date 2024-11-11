@@ -10,7 +10,7 @@ import {focusManager} from '@tanstack/react-query';
 import BootSplash from 'react-native-bootsplash';
 import {ErrorBoundary} from '../../components';
 import {globalStyles} from '../../styles';
-import {LoginScreen} from '../../screens';
+import {HomeScreen} from '../../screens';
 import React, {useEffect} from 'react';
 
 const Stack = createNativeStackNavigator<RootStackParamsList>();
@@ -42,7 +42,7 @@ const Navigation = () => {
 
   const PublicRoute = (
     <>
-      <Stack.Screen name={RouteNames.screens.Login} component={LoginScreen} />
+      <Stack.Screen name={RouteNames.screens.Home} component={HomeScreen} />
     </>
   );
 
@@ -52,7 +52,7 @@ const Navigation = () => {
         <Stack.Navigator
           screenOptions={{headerShown}}
           initialRouteName={
-            !isAuth ? RouteNames.screens.Login : RouteNames.screens.Splash
+            !isAuth ? RouteNames.screens.Home : RouteNames.screens.Splash
           }>
           {!isAuth ? PublicRoute : PrivateRoutes}
         </Stack.Navigator>
